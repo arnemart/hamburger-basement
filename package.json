@@ -14,7 +14,6 @@
     "watchify": "~0.6.1"
   },
   "dependencies": {
-    "topcoat": "~0.7.5",
     "react": "~0.9.0",
     "react-topcoat": "~0.1.2"
   },
