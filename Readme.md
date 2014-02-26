@@ -1,14 +1,14 @@
 hamburger-basement
 ==================
 
-A hamburger basement component for[React][1], using [Topcoat][2].
+A hamburger basement component for [React][1], using [Topcoat][2].
 
 Wth
 ---
 
 A “hamburger basement” is a common design pattern in mobile apps, where a button with an icon that kinda looks like a hamburger (typically in the top left corner) slides the main content aside and reveals a menu underneath.
 
-This implementation uses touch events to allow sliding the content to the side with a finger, in addition to using the button.
+This one also uses touch events to allow sliding the content to the side with a finger.
 
 Installation
 ------------
@@ -69,6 +69,8 @@ var hb = hamburgerBasement({
 React.initializeTouchEvents(true);
 React.renderComponent(hb, document.getElementById('main'));
 ```
+
+Run `npm test` to build the test script and open the test html file.
 
 
 [1]: http://facebook.github.io/react/

@@ -1,6 +1,6 @@
 {
   "name": "hamburger-basement",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Arne Martin Aurlien <am@aurlien.net>",
   "description": "A hamburger basement component for React and Topcoat",
   "main": "./hamburger-basement",
