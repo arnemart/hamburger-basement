@@ -10,6 +10,13 @@ A “hamburger basement” is a common design pattern in mobile apps, where a bu
 
 This one also uses touch events to allow sliding the content to the side with a finger.
 
+Demo
+----
+
+Go here: <http://arnemart.github.io/hamburger-basement/>
+
+(Preferably on mobile)
+
 Installation
 ------------
 
