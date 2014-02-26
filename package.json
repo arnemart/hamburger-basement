@@ -1,0 +1,24 @@
+{
+  "name": "hamburger-basement",
+  "version": "0.1.0",
+  "author": "Arne Martin Aurlien <am@aurlien.net>",
+  "description": "A hamburger basement component for React and Topcoat",
+  "main": "./hamburger-basement",
+  "repository": "https://github.com/arnemart/hamburger-button.git",
+  "keywords": [
+    "react",
+    "topcoat"
+  ],
+  "devDependencies": {
+    "watchify": "~0.6.1"
+  },
+  "dependencies": {
+    "topcoat": "~0.7.5",
+    "react": "~0.9.0",
+    "react-topcoat": "~0.1.2"
+  },
+  "scripts": {
+    "test": "watchify -vo test-built.js test.js && open test.html"
+  },
+  "license": "MIT"
+}
