@@ -25,8 +25,7 @@ var content = React.createClass({
 var hb = hamburgerBasement({
     basement: basement(),
     title: 'Testing testing',
-    content: content(),
-    basementWidth: 400
+    content: content()
 });
 
 React.initializeTouchEvents(true);
