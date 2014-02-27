@@ -18,7 +18,7 @@
     "react-topcoat": "~0.1.2"
   },
   "scripts": {
-    "test": "watchify -vo test-built.js test.js && open test.html"
+    "watch": "watchify -vo test-built.js test.js"
   },
   "license": "MIT"
 }
