@@ -15,34 +15,40 @@
                     basementWidth: window.innerWidth,
                     toggleDistanceDelta: 50,
                     openOffset: 85,
-                    _translate: 0,
-                    _animate: false,
-                    _open: false
+                };
+            },
+            getInitialState: function() {
+                return {
+                    translate: 0,
+                    startingPosition: 0,
+                    touching: false,
+                    animate: false,
+                    open: false
                 };
             },
             enableAnimation: function() {
                 clearTimeout(this.deactivateanimationTimeout);
-                if (!this.props._animate) {
-                    this.setProps({
-                        _animate: true
+                if (!this.state.animate) {
+                    this.setState({
+                        animate: true
                     });
                 }
             },
             disableAnimation: function() {
                 clearTimeout(this.deactivateanimationTimeout);
-                if (this.props._animate) {
-                    this.setProps({
-                        _animate: false
+                if (this.state.animate) {
+                    this.setState({
+                        animate: false
                     });
                 }
             },
             // Slide the overlay to a specific position
             slideTo: function(translate, params) {
-                this.touching = false;
                 this.enableAnimation();
-                this.setProps({
-                    _translate: translate,
-                    _open: (params ? params.open : this.props._open)
+                this.setState({
+                    touching: false,
+                    translate: translate,
+                    open: (params ? params.open : this.state.open)
                 });
                 var self = this;
                 this.deactivateanimationTimeout = setTimeout(function() {
@@ -57,7 +63,7 @@
             },
             // Animate back to current open/closed state
             goBack: function() {
-                if (this.props._open) {
+                if (this.state.open) {
                     this.open();
                 } else {
                     this.close();
@@ -65,35 +71,39 @@
             },
             // Toggle open/closed
             toggle: function() {
-                if (this.props._open) {
+                if (this.state.open) {
                     this.close();
                 } else {
                     this.open();
                 }
             },
             touchStart: function(e) {
-                this.startingPosition = this.props._translate;
-                this.startX = e.targetTouches[0].pageX;
-                this.startY = e.targetTouches[0].pageY;
+                this.setState({
+                    startingPosition: this.state.translate,
+                    startX: e.targetTouches[0].pageX,
+                    startY: e.targetTouches[0].pageY
+                });
                 this.disableAnimation();
             },
             touchMove: function(e) {
-                this.touching = true;
-                this.deltaX = e.targetTouches[0].pageX - this.startX;
-                this.deltaY = e.targetTouches[0].pageY - this.startY;
-                if (Math.abs(this.deltaX) > Math.abs(this.deltaY) * 3) {
+                this.setState({
+                    touching: true,
+                    deltaX: e.targetTouches[0].pageX - this.state.startX,
+                    deltaY: e.targetTouches[0].pageY - this.state.startY
+                });
+                if (Math.abs(this.state.deltaX) > Math.abs(this.state.deltaY) * 3) {
                     e.preventDefault();
-                    if (this.deltaX < 0 && !this.props._open) {
+                    if (this.state.deltaX < 0 && !this.state.open) {
                         this.deltaX = 0;
                     }
-                    this.setProps({
-                        _translate: this.deltaX + this.startingPosition
+                    this.setState({
+                        translate: this.state.deltaX + this.state.startingPosition
                     });
                 }
             },
             touchEnd: function() {
-                if (this.touching) {
-                    if (Math.abs(this.deltaX) > this.props.toggleDistanceDelta) {
+                if (this.state.touching) {
+                    if (Math.abs(this.state.deltaX) > this.props.toggleDistanceDelta) {
                         this.toggle();
                     } else {
                         this.goBack();
@@ -101,6 +111,7 @@
                 }
             },
             render: function() {
+                console.log('rendring');
                 return d.div(
                     { className: 'hamburger-basement' },
                     d.div(
@@ -111,14 +122,14 @@
                         {
                             className: 'hamburger-basement-main',
                             style: {
-                                '-webkit-transform': 'translate3d(' + this.props._translate + 'px, 0, 0)',
-                                '-moz-transform': 'translateX(' + this.props._translate + 'px)',
-                                '-o-transform': 'translateX(' + this.props._translate + 'px)',
-                                'transform': 'translateX(' + this.props._translate + 'px)',
-                                '-webkit-transition': (this.props._animate ? '-webkit-transform ' + this.props.animationDuration + 's ease-out' : 'none'),
-                                '-moz-transition': (this.props._animate ? '-moz-transform ' + this.props.animationDuration + 's ease-out' : 'none'),
-                                '-o-transition': (this.props._animate ? '-o-transform ' + this.props.animationDuration + 's ease-out' : 'none'),
-                                'transition': (this.props._animate ? 'transform ' + this.props.animationDuration + 's ease-out' : 'none')
+                                '-webkit-transform': 'translate3d(' + this.state.translate + 'px, 0, 0)',
+                                '-moz-transform': 'translateX(' + this.state.translate + 'px)',
+                                '-o-transform': 'translateX(' + this.state.translate + 'px)',
+                                'transform': 'translateX(' + this.state.translate + 'px)',
+                                '-webkit-transition': (this.state.animate ? '-webkit-transform ' + this.props.animationDuration + 's ease-out' : 'none'),
+                                '-moz-transition': (this.state.animate ? '-moz-transform ' + this.props.animationDuration + 's ease-out' : 'none'),
+                                '-o-transition': (this.state.animate ? '-o-transform ' + this.props.animationDuration + 's ease-out' : 'none'),
+                                'transition': (this.state.animate ? 'transform ' + this.props.animationDuration + 's ease-out' : 'none')
                             },
                             onTouchStart: this.touchStart,
                             onTouchMove: this.touchMove,
