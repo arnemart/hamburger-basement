@@ -77,7 +77,7 @@ React.initializeTouchEvents(true);
 React.renderComponent(hb, document.getElementById('main'));
 ```
 
-Run `npm test` to build the test script and open the test html file.
+Run `npm run watch` to build the test script.
 
 
 [1]: http://facebook.github.io/react/
