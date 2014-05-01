@@ -1,13 +1,21 @@
-.hamburger-basement {
-    overflow-y: hidden;
-}
-
-.hamburger-basement-basement, .hamburger-basement-main {
+.hamburger-basement, .hamburger-basement-basement, .hamburger-basement-main {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+}
+
+.hamburger-basement {
+    overflow: hidden;
+}
+
+.hamburger-basement-basement, .hamburger-basement-main {
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
+}
+
+.hamburger-basement-main {
+    background-color: #4b4d4e;
+    box-shadow: 0 0 5px black;
 }
