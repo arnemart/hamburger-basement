@@ -1,6 +1,6 @@
 {
   "name": "hamburger-basement",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "author": "Arne Martin Aurlien <am@aurlien.net>",
   "description": "A hamburger basement component for React and Topcoat",
   "main": "./hamburger-basement",
@@ -11,11 +11,11 @@
     "topcoat"
   ],
   "devDependencies": {
-    "watchify": "0.8.1"
+    "watchify": "~0.10.0"
   },
   "dependencies": {
     "react": "~0.10.0",
-    "react-topcoat": "~0.1.5"
+    "react-topcoat": "~0.2.0"
   },
   "scripts": {
     "watch": "watchify -vo test-built.js test.js"

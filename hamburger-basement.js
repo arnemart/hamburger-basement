@@ -144,7 +144,7 @@
                         }),
                         d.div(
                             { className: 'hamburger-basement-content'},
-                            this.props.content
+                            this.props.children
                         )
                     )
                 );
