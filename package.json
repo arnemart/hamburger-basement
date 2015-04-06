@@ -4,7 +4,7 @@
   "author": "Arne Martin Aurlien <am@aurlien.net>",
   "description": "A hamburger basement component for React and Topcoat",
   "main": "./hamburger-basement",
-  "repository": "https://github.com/arnemart/hamburger-button.git",
+  "repository": "https://github.com/arnemart/hamburger-basement.git",
   "keywords": [
     "hamburger basement",
     "react",
